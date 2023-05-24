@@ -3,7 +3,7 @@ from magazynier.models import Produkty
 from piekarz.models import Przepisy, Skladniki
 
 # Create your views here.
-def homeView(request):
+def home_view(request):
     # przepis = Przepisy.objects.get(przepis_id=1)
     # skladniki = Skladniki.objects.get(przepis.przepis_id)
     # nazwy_skladnikow = []

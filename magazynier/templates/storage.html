@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+{% for produkt in produkty %}
+<li>
+    {{produkt.produkt_id}} - {{produkt.ilosc_dostepna}} - {{produkt.nazwa_produktu}}
+    <form action="{% url 'uzupelnij' produkt.produkt_id %}" method="POST"> {% csrf_token %}
+        <button type="submit" value="{{produkt.produkt_id}}">Uzupełnij</button>
+    </form>
+    <form action="." method="POST"> {% csrf_token %}
+        <button type="submit" name="produkt_id" value="{{produkt.produkt_id}}">Usuń z magazynu</button>
+    </form>
+</li>
+{% endfor %}
+</ul>
+
+<form action="{% url 'dodaj' %}" method="GET"> {% csrf_token %}
+    <button type="submit">Dodaj nowy produkt</button>
+</form>
+
+
+{% endblock %}
