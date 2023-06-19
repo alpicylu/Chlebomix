@@ -1,2 +1,5 @@
 bd_venv/
 __pycache__/
+temp.txt
+bd_venv_require.txt
+node_modules/
