@@ -2,16 +2,21 @@ from django.shortcuts import render, get_object_or_404, redirect
 from magazynier.models import Produkty
 from django.http import HttpResponse
 from .forms import ProduktyRestockForm, ProduktyRemoveForm
+from django.contrib.auth.models import Permission
 
 # Create your views here.
 def show_storage(request):
     if request.method == "POST":
         product_to_remove = get_object_or_404(Produkty, produkt_id=request.POST.get("produkt_id"))
         product_to_remove.delete()
+
+    permissions = Permission.objects.filter(user=request.user)
     obj = Produkty.objects.all()
     context = {
-        "produkty": obj
+        "produkty": obj,
+        "permissions": permissions
     }
+
     return render(request, "storage.html", context)
 
 def restock_form(request, prod_id):
