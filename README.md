@@ -1,4 +1,5 @@
 # Chlebomix
+(Unfinished and unpolished) simple web-based project for managing a bakery using the Django framework
 
 ## Prerequirements
 ```bash
